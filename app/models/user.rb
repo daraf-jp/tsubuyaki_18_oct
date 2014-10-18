@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password, confirmation: true
   validates :password_confirmation, presence: true, if: :password
+
+  def followed_by? user
+    followers.where(id: user.id).exists?
+  end
 end
