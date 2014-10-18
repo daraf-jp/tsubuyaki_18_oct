@@ -3,6 +3,7 @@
     = link_to "Tsubuyaki", root_url, class: "navbar-brand"
   %ul.nav.navbar-nav
     - if logged_in?
+      %li= link_to "tweets", tweets_path
       %li= link_to "sign out", sessions_path, method: :delete
     - else
       %li= link_to "sign up", new_registrations_path
