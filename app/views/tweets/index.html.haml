@@ -21,3 +21,8 @@
           = link_to "お気に入りを解除", tweet_favorites_path(tweet), method: :delete
         - else
           = link_to "お気に入りに追加", tweet_favorites_path(tweet), method: :post
+
+        - if tweet.user.followed_by? current_user
+          = link_to "フォロー解除", user_follows_path(tweet.user), method: :delete
+        - else
+          = link_to "フォローする", user_follows_path(tweet.user), method: :post
