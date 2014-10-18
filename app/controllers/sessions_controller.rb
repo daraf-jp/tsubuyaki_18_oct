@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     password = params_user[:password]
 
     if login(email, password)
-      redirect_to root_url
+      redirect_to tweets_url
     else
       @user = User.new(email: email)
       render "new"
