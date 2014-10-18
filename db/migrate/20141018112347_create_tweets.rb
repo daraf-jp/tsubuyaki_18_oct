@@ -5,6 +5,8 @@ class CreateTweets < ActiveRecord::Migration
       t.string :content
 
       t.timestamps
+
+      t.index :user_id
     end
   end
 end
