@@ -1,4 +1,6 @@
 .col-xs-12
+  - @user.errors.full_messages.each do |message|
+    .alert.alert-danger= message
   = form_for @user, url: registrations_path, method: :post do |f|
     .form-group
       = f.label :name, class: "control-label"
