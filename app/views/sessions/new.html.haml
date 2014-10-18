@@ -1,2 +1,11 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+.col-xs-12
+  - @user.errors.full_messages.each do |message|
+    .alert.alert-danger= message
+  = form_for @user, url: sessions_path, method: :post do |f|
+    .form-group
+      = f.label :email, class: "control-label"
+      = f.text_field :email, class: "form-control"
+    .form-group
+      = f.label :password, class: "control-label"
+      = f.password_field :password, class: "form-control"
+    = f.submit
