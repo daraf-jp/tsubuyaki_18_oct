@@ -17,3 +17,4 @@
         = tweet.user.name
       %p
         = tweet.content
+        = link_to "お気に入りに追加", tweet_favorites_path(tweet), method: :post
