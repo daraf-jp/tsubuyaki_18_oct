@@ -11,4 +11,10 @@ class FavoritesController < ApplicationController
       redirect_to tweets_url, notice: "failed"
     end
   end
+
+  def destroy
+    @favorite = current_user.favorites.find_by!(tweet_id: params[:tweet_id])
+    @favorite.destroy
+    redirect_to tweets_url, notice: "succesfully deleted favorite."
+  end
 end
