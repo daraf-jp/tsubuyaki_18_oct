@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018114850) do
+ActiveRecord::Schema.define(version: 20141018121313) do
 
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20141018114850) do
 
   add_index "favorites", ["tweet_id"], name: "index_favorites_on_tweet_id"
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
+  create_table "follows", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "inverse_follower_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["follower_id"], name: "index_follows_on_follower_id"
+  add_index "follows", ["inverse_follower_id"], name: "index_follows_on_inverse_follower_id"
 
   create_table "tweets", force: true do |t|
     t.integer  "user_id"
