@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :tweets
+  resources :tweets do
+    resource :favorites, only: [:create, :destroy]
+  end
 
   resource  :registrations, only: [:new, :create, :destroy]
   resource  :sessions, only: [:new, :create, :destroy]
