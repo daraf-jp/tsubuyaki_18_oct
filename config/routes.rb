@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   resource  :registrations, only: [:new, :create, :destroy]
   resource  :sessions, only: [:new, :create, :destroy]
-  resources :users
+
+  resources :users do
+    resource :follows, only: [:create, :destroy]
+  end
 
   root to: 'registrations#new'
 
