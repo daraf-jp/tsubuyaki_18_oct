@@ -7,6 +7,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(params_user)
 
     if @user.save
+      auto_login @user
       redirect_to tweets_url
     else
       render "new"
