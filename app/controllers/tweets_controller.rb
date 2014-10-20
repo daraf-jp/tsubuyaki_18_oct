@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.includes(user: :follows).where(follows: { follower_id: current_user.id }).order(created_at: :desc)
     @tweet  = Tweet.new
   end
 
