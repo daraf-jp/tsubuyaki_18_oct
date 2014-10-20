@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true
   validates :password_confirmation, presence: true, if: :password
 
+  after_create do |user|
+    user.follows.create(follower: user)
+  end
+
   def followed_by? user
     followers.where(id: user.id).exists?
   end
