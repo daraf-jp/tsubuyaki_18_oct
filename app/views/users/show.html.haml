@@ -1,6 +1,5 @@
-%p#notice= notice
-
-
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+.col-xs-3
+  = render partial: "user_panel", locals: { user: @user }
+.col-xs-9
+  .list-group
+    = render @user.tweets
