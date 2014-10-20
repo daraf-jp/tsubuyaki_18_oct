@@ -1,12 +1,5 @@
 .col-xs-3
-  .panel.panel-default
-    .panel-heading
-      = current_user.name
-    .panel-body
-      .btn-group
-        #{current_user.tweets.count} tweets,
-        #{current_user.favorites.count} favs,
-        #{current_user.followers.count} followers
+  = render partial: "user_panel", locals: { user: current_user }
 .col-xs-9
   .list-group
     = div_for @users, class: "list-group-item" do |user|

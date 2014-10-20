@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-heading
+    = user.name
+  .panel-body
+    .btn-group
+      #{user.tweets.count} tweets,
+      #{user.favorites.count} favs,
+      #{user.followers.count} followers
