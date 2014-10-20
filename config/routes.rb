@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :follows, only: [:create, :destroy]
+
+    get :favorites, on: :member
   end
 
   root to: 'registrations#new'
