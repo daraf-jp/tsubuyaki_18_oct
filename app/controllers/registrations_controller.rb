@@ -8,7 +8,7 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       auto_login @user
-      redirect_to tweets_url
+      redirect_to tweets_url, notice: "welcome! #{@user.name}!"
     else
       render "new"
     end
