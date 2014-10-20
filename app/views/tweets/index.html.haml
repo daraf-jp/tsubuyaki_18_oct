@@ -12,10 +12,5 @@
     .alert.alert-info= notice
 
   .list-group
-    = div_for @tweets, class: "list-group-item" do |tweet|
-      %h4
-        = tweet.user.name
-      %p
-        = tweet.content
-        = link_to_favorite_or_unfavorite tweet
-        = link_to_follow_or_unfollow tweet.user
+    - @tweets.each do |tweet|
+      = render partial: "tweet", object: tweet
