@@ -12,5 +12,4 @@
     .alert.alert-info= notice
 
   .list-group
-    - @tweets.each do |tweet|
-      = render partial: "tweet", object: tweet
+    = render partial: "tweet", collection: @tweets
