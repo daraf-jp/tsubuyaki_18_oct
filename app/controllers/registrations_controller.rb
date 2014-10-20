@@ -1,4 +1,6 @@
 class RegistrationsController < ApplicationController
+  before_filter :require_not_login
+
   def new
     @user = User.new
   end
