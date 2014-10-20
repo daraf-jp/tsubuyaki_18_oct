@@ -14,8 +14,12 @@ class FollowsController < ApplicationController
 
   def destroy
     @follow = Follow.find_by!(follower_id: current_user.id, inverse_follower_id: params[:user_id])
-    @follow.destroy
 
-    redirect_to tweets_url, notice: "successfully unfollowed."
+    if @follow.inverse_follower == current_user
+      redirect_to tweets_url, notice: "can't unfollow yourself."
+    else
+      @follow.destroy
+      redirect_to tweets_url, notice: "successfully unfollowed."
+    end
   end
 end
