@@ -1,5 +1,13 @@
 .col-xs-3
   = render partial: "user_panel", locals: { user: @user }
 .col-xs-9
+  %ul.nav.nav-tabs.nav-justified
+    %li.active
+      = link_to "tweets", user_path(@user)
+    %li
+      = link_to "favorites", favorites_user_path(@user)
+
+  .spacing
+
   .list-group
     = render @user.tweets
