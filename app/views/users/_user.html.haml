@@ -1,0 +1,5 @@
+= div_for user, class: "list-group-item" do |u|
+  %h4
+    = link_to u.name, user_path(u)
+  %p
+    = link_to_follow_or_unfollow u
