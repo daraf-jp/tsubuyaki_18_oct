@@ -1,6 +1,6 @@
 = div_for tweet, class: "list-group-item" do |t|
   %h4
-    = t.user.name
+    = link_to t.user.name, user_path(t.user)
   %p
     = t.content
     = link_to_favorite_or_unfavorite t
