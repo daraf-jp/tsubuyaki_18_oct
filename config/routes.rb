@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     get :favorites, on: :member
     get :followers, on: :member
+    get :follows,   on: :member
   end
 
   root to: 'registrations#new'
