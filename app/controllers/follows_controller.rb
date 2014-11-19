@@ -6,9 +6,9 @@ class FollowsController < ApplicationController
     @follow = @user.follows.build(follower: current_user)
 
     if @follow.save
-      redirect_to tweets_url, notice: "successfully followed."
+      redirect_to users_url, notice: "successfully followed."
     else
-      redirect_to tweets_url
+      redirect_to users_url
     end
   end
 
@@ -16,10 +16,10 @@ class FollowsController < ApplicationController
     @follow = Follow.find_by!(follower_id: current_user.id, inverse_follower_id: params[:user_id])
 
     if @follow.inverse_follower == current_user
-      redirect_to tweets_url, notice: "can't unfollow yourself."
+      redirect_to users_url, notice: "can't unfollow yourself."
     else
       @follow.destroy
-      redirect_to tweets_url, notice: "successfully unfollowed."
+      redirect_to users_url, notice: "successfully unfollowed."
     end
   end
 end
