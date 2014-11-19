@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :follows, only: [:create, :destroy]
+    resources :favorites, only: [:index, :create, :destroy], controller: :user_favorites
 
-    get :favorites, on: :member
     get :followers, on: :member
     get :follows,   on: :member
   end
