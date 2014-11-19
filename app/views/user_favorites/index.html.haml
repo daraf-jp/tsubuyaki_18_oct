@@ -1,11 +1,11 @@
 .col-xs-3
-  = render partial: "user_panel", locals: { user: @user }
+  = render partial: "users/user_panel", locals: { user: @user }
 .col-xs-9
   %ul.nav.nav-tabs.nav-justified
     %li
       = link_to "tweets", user_path(@user)
     %li.active
-      = link_to "favorites", favorites_user_path(@user)
+      = link_to "favorites", user_favorites_path(@user)
     %li
       = link_to "followers", followers_user_path(@user)
     %li
