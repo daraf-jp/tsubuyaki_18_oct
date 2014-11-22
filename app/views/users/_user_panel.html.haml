@@ -3,6 +3,9 @@
     = render_user_screen_name current_user
   .panel-body
     .btn-group
-      #{user.tweets.count} tweets,
-      #{user.favorites.count} favs,
-      #{user.followers.count} followers
+      = link_to user_path(current_user) do
+        #{user.tweets.count} tweets,
+      = link_to user_follows_path(current_user) do
+        #{user.favorites.count} favs,
+      = link_to user_followers_path(current_user) do
+        #{user.followers.count} followers
