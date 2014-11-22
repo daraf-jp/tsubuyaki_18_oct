@@ -1,7 +1,5 @@
-- if notice
-  .alert.alert-info= notice
-.col-xs-3
-  = render partial: "user_panel", locals: { user: current_user }
-.col-xs-9
+.col-xs-8#users-content
   .list-group
+    .list-group-item.user-list
+      %h2 ユーザー一覧
     = render @users

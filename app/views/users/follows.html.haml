@@ -2,15 +2,28 @@
   = render partial: "user_bio"
   %ul.nav.nav-tabs.nav-justified
     %li
-      = link_to "tweets", user_path(@user)
-    %li
-      = link_to "favorites", user_favorites_path(@user)
-    %li
-      = link_to "followers", followers_user_path(@user)
+      = link_to user_path(@user) do
+        .text
+          つぶやき
+        .num
+          #{@user.tweets.count}
     %li.active
-      = link_to "follows", follows_user_path(@user)
-
-  .spacing
-
+      = link_to follows_user_path(@user) do
+        .text
+          フォロー
+        .num
+          #{@user.follows.count}
+    %li
+      = link_to followers_user_path(@user) do
+        .text
+          フォロワー
+        .num
+          #{@user.followers.count}
+    %li
+      = link_to user_favorites_path(@user) do
+        .text
+          お気に入り
+        .num
+          #{@user.favorites.count}
   .list-group
     = render @user.inverse_followers

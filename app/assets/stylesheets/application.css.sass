@@ -92,13 +92,14 @@ html, body
 
 #users-content
   float: none
-  margin: 0 auto
+  margin: 0 auto 35px
+  padding: 0px
   background-color: #fff
   border: 1px solid #ddd
   border-radius: 6px
   border-bottom-width: 3px
-  .user
-    padding: 20px
+  .user-info
+    padding: 20px 35px
     .user-name
       font-size: 28px
       font-weight: 600
@@ -107,3 +108,48 @@ html, body
       color: #aaa
     .bio
       margin-top: 5px
+  .nav.nav-tabs
+    border-top: 1px solid #ddd
+    border-bottom: 2px solid #ddd
+    li
+      a
+        border: none
+        &:hover
+          background-color: #fff
+        .text
+        .num
+          font-size: 28px
+  .list-group
+    margin-bottom: -1px
+    .list-group-item
+      border: none
+      border-bottom: 1px solid #ddd
+      margin-bottom: 0px
+      &:last-child
+      .user
+        .user-name
+          a
+            color: #555
+        .user-id
+          font-size: 14px
+          color: #aaa
+          font-weight: 400
+        .time
+          font-size: 12px
+          color: #aaa
+          font-weight: 400
+      .tweet-content
+        font-size: 16px
+        .content-footer
+          a
+            font-size: 12px
+            margin-right: 10px
+      .follow-unfollow
+        margin-top: 5px
+        a
+          font-size: 12px
+    .user-list
+      border-bottom-width: 2px
+      h2
+        font-size: 20px
+        margin: 0px

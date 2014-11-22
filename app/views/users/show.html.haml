@@ -2,26 +2,42 @@
   = render partial: "user_bio"
   %ul.nav.nav-tabs.nav-justified
     %li.active
-      = link_to "つぶやき", user_path(@user)
-      #{@user.tweets.count}
+      = link_to user_path(@user) do
+        .text
+          つぶやき
+        .num
+          #{@user.tweets.count}
     %li
-      = link_to "フォロー", followers_user_path(@user)
-      #{@user.followers.count}
+      = link_to follows_user_path(@user) do
+        .text
+          フォロー
+        .num
+          #{@user.follows.count}
     %li
-      = link_to "フォロワー", follows_user_path(@user)
-      #{@user.favorites.count}
+      = link_to followers_user_path(@user) do
+        .text
+          フォロワー
+        .num
+          #{@user.followers.count}
     %li
-      = link_to "お気に入り", user_favorites_path(@user)
-      #{@user.follows.count}
-
-  .spacing
-
+      = link_to user_favorites_path(@user) do
+        .text
+          お気に入り
+        .num
+          #{@user.favorites.count}
   .list-group
     = div_for @user.tweets, class: "list-group-item" do |t|
-      %h4
-        = link_to t.user.name, user_path(t.user)
-      %p
-        = t.content
-        = distance_of_time_in_words_to_now(t.created_at)
-        = link_to_favorite_or_unfavorite t if logged_in?
-        = link_to_follow_or_unfollow t.user if logged_in?
+      %h4.user
+        %span.user-name
+          = link_to t.user.name, user_path(t.user)
+        %span.user-id
+          @#{t.user.name}
+        %span.time.pull-right
+          = distance_of_time_in_words_to_now(t.created_at)
+        .clear
+      .tweet-content
+        %p
+          = t.content
+        .content-footer
+          = link_to_favorite_or_unfavorite t if logged_in?
+          = link_to_follow_or_unfollow t.user if logged_in?
