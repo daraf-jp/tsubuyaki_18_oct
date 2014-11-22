@@ -5,14 +5,14 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    if logged_in?
-      @tweets = Tweet.includes(user: :follows).where(follows: { follower_id: current_user.id }).order(created_at: :desc)
-      @tweet  = Tweet.new
-      render :index_logged_in
-    else
-      @tweets = Tweet.all
-      render :index
-    end
+    @tweets = Tweet.all
+    render :index
+  end
+
+  def timeline
+    @tweets = Tweet.includes(user: :follows).where(follows: { follower_id: current_user.id }).order(created_at: :desc)
+    @tweet  = Tweet.new
+    render :index_logged_in
   end
 
   # GET /tweets/1
