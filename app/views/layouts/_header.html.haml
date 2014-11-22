@@ -1,13 +1,14 @@
 .navbar.navbar-default
-  .navbar-header
-    = link_to "Tsubuyaki", root_url, class: "navbar-brand"
-  %ul.nav.navbar-nav
-    - if logged_in?
-      %li= link_to "tweets", tweets_path
-      %li= link_to "users", users_path
-      %li= link_to current_user.name, current_user
-      %li= link_to "設定", edit_settings_path
-      %li= link_to "sign out", sessions_path, method: :delete
-    - else
-      %li= link_to "sign up", new_registrations_path
-      %li= link_to "sign in", new_sessions_path
+  .container
+    .navbar-header
+      = link_to "Tsubuyaki", root_url, class: "navbar-brand"
+    %ul.nav.navbar-nav
+      - if logged_in?
+        %li= link_to "tweets", tweets_path
+        %li= link_to "users", users_path
+        %li= link_to current_user.name, current_user
+        %li= link_to "設定", edit_settings_path
+        %li= link_to "sign out", sessions_path, method: :delete
+      - else
+        %li= link_to "sign up", new_registrations_path
+        %li= link_to "sign in", new_sessions_path
