@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'settings/edit'
+
   resources :tweets do
     resource :favorites, only: [:create, :destroy]
   end
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
     get :followers, on: :member
     get :follows,   on: :member
   end
+
+  resource :settings, only: [:edit, :update]
 
   root to: 'registrations#new'
 
