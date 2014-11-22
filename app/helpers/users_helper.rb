@@ -1,4 +1,9 @@
 module UsersHelper
+  def render_user_screen_name user
+    name = user.screen_name ? user.screen_name : user.name
+    "@#{name}"
+  end
+
   def link_to_follow_or_unfollow user
     unless user == current_user
       if user.followed_by? current_user
