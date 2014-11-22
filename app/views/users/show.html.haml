@@ -15,7 +15,7 @@
   .spacing
 
   .list-group
-    = div_for @tweet, class: "list-group-item" do |t|
+    = div_for @user.tweets, class: "list-group-item" do |t|
       %h4
         = link_to t.user.name, user_path(t.user)
       %p
