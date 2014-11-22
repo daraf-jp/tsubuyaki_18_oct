@@ -3,5 +3,5 @@
     = link_to t.user.name, user_path(t.user)
   %p
     = t.content
-    = link_to_favorite_or_unfavorite t
-    = link_to_follow_or_unfollow t.user
+    = link_to_favorite_or_unfavorite t if logged_in?
+    = link_to_follow_or_unfollow t.user if logged_in?

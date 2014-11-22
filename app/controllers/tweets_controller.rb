@@ -1,16 +1,16 @@
 class TweetsController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, except: [:index]
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.includes(user: :follows).where(follows: { follower_id: current_user.id }).order(created_at: :desc)
-    @tweet  = Tweet.new
-
     if logged_in?
+      @tweets = Tweet.includes(user: :follows).where(follows: { follower_id: current_user.id }).order(created_at: :desc)
+      @tweet  = Tweet.new
       render :index_logged_in
     else
+      @tweets = Tweet.all
       render :index
     end
   end
