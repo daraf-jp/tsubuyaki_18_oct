@@ -1,2 +1,17 @@
 %h1 Settings#edit
 %p Find me in app/views/settings/edit.html.haml
+
+- if notice
+  .alert.alert-info= notice
+
+- @user.errors.full_messages.each do |message|
+  .alert.alert-danger= message
+
+= form_for @user, url: settings_path, method: :put do |f|
+  = f.label :name, "ユーザーID"
+  = f.text_field :name
+  = f.label :screen_name, "表示名"
+  = f.text_field :screen_name
+  = f.label :bio, "プロフィール(200文字)"
+  = f.text_area :bio
+  = f.submit "送信する"
