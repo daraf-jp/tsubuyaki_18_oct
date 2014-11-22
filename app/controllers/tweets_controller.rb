@@ -7,6 +7,12 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.includes(user: :follows).where(follows: { follower_id: current_user.id }).order(created_at: :desc)
     @tweet  = Tweet.new
+
+    if logged_in?
+      render :index_logged_in
+    else
+      render :index
+    end
   end
 
   # GET /tweets/1
