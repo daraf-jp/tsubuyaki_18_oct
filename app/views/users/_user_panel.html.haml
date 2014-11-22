@@ -1,6 +1,6 @@
 .panel.panel-default
   .panel-heading
-    = user.name
+    = render_user_screen_name current_user
   .panel-body
     .btn-group
       #{user.tweets.count} tweets,

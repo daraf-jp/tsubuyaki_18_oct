@@ -1,14 +1,18 @@
-.col-xs-9
+.col-xs-8#users-content
+  = render partial: "user_bio"
   %ul.nav.nav-tabs.nav-justified
     %li.active
-      = link_to "tweets", user_path(@user)
+      = link_to "つぶやき", user_path(@user)
+      #{@user.tweets.count}
     %li
-      = link_to "favorites", user_favorites_path(@user)
+      = link_to "フォロー", followers_user_path(@user)
+      #{@user.followers.count}
     %li
-      = link_to "followers", followers_user_path(@user)
+      = link_to "フォロワー", follows_user_path(@user)
+      #{@user.favorites.count}
     %li
-      = link_to "follows", follows_user_path(@user)
-
+      = link_to "お気に入り", user_favorites_path(@user)
+      #{@user.follows.count}
 
   .spacing
 

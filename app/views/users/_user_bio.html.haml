@@ -1,0 +1,7 @@
+.user
+  %span.user-name
+    = current_user.name
+  %span.user-id
+    @#{current_user.name}
+  .bio
+    = @user.bio
