@@ -1,7 +1,7 @@
 .navbar.navbar-default
   .container
     .navbar-header
-      = link_to "Tsubuyaki", root_url, class: "navbar-brand"
+      = link_to "#Tsubuyaki", root_url, class: "navbar-brand"
     - if logged_in?
       %ul.nav.navbar-nav
         %li= link_to "タイムライン", tweets_path
@@ -9,8 +9,8 @@
       %ul.nav.navbar-nav.navbar-right
         %li= link_to current_user.name, current_user
         %li= link_to "設定", edit_settings_path
-        %li= link_to "sign out", sessions_path, method: :delete
+        %li= link_to "ログアウト", sessions_path, method: :delete
     - else
       %ul.nav.navbar-nav.navbar-right
-        %li= link_to "sign up", new_registrations_path
-        %li= link_to "sign in", new_sessions_path
+        %li= link_to "ログアウト", new_registrations_path
+        %li= link_to "ログイン", new_sessions_path

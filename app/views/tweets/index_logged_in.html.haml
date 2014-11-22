@@ -1,24 +1,39 @@
-.container
-  .row
-    .col-xs-4
-      .panel.panel-default
-        .panel-heading
-          = link_to user_path(current_user) do
-            = current_user.name
-            = render_user_screen_name current_user
-        .panel-body
-          つぶやき #{current_user.tweets.count}
-          フォロー #{current_user.follows.count}
-          フォロワー #{current_user.inverse_follows.count}
-          = form_for @tweet do |f|
-            .form-group
-              = f.text_area :content, class: "form-control"
-            = f.submit class: "btn btn-default"
-    .col-xs-8
-      - if notice
-        .alert.alert-info= notice
-      - @tweet.errors.full_messages.each do |message|
-        .alert.alert-danger= message
-
-      .list-group
-        = render @tweets
+#tweets-content
+  .container
+    .row
+      .col-xs-4.left-content
+        .panel.panel-default
+          .panel-body
+            = link_to user_path(current_user), class: "user" do
+              %span.user-name
+                = render_user_screen_name current_user
+              %span.user-id
+                @#{current_user.name}
+            .user-activity
+              .row
+                .col-xs-4.tweets-num
+                  .text
+                    つぶやき
+                  .num
+                    #{current_user.tweets.count}
+                .col-xs-4.follow-num
+                  .text
+                    フォロー
+                  .num
+                    #{current_user.follows.count}
+                .col-xs-4.follower-num
+                  .text
+                    フォロワー
+                  .num
+                    #{current_user.inverse_follows.count}
+            = form_for @tweet do |f|
+              .form-group
+                = f.text_area :content, class: "form-control"
+              = f.submit "つぶやく", class: "btn btn-success"
+      .col-xs-8.right-content
+        .list-group
+          .list-group-item
+            .btn-group
+              = link_to "すべてのつぶやき", tweets_path, class: "btn btn-default"
+              = link_to "フォローしている人のつぶやき", timeline_tweets_path, class: "active btn btn-primary"
+          = render @tweets
