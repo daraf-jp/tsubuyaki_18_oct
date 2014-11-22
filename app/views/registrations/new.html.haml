@@ -1,17 +1,30 @@
-.col-xs-12
-  - @user.errors.full_messages.each do |message|
-    .alert.alert-danger= message
-  = form_for @user, url: registrations_path, method: :post do |f|
-    .form-group
-      = f.label :name, class: "control-label"
-      = f.text_field :name, class: "form-control"
-    .form-group
-      = f.label :email, class: "control-label"
-      = f.text_field :email, class: "form-control"
-    .form-group
-      = f.label :password, class: "control-label"
-      = f.password_field :password, class: "form-control"
-    .form-group
-      = f.label :password_confirmation, class: "control-label"
-      = f.password_field :password_confirmation, class: "form-control"
-    = f.submit
+#registrations-new
+  .col-xs-6.left-content
+    %h1 #Tsubuyaki
+    %p.ex
+      このサイトは、シラバスのRails学習コースの完成形サンプルサイトです。Microsoft Azureにデプロイされています。
+    %p.by
+      開発者：@ohataken　デザイン：@keito0904　企画者：@saiwaki14
+    = link_to tweets_path, class: "btn-tsubuyaki" do
+      つぶやき一覧へ
+  .col-xs-6.right-content
+    - @user.errors.full_messages.each do |message|
+      .alert.alert-danger= message
+    = form_for @user, url: registrations_path, method: :post do |f|
+      %h2
+        会員登録する
+      .form-group
+        = f.label :name, "ユーザーID : @cyllabus_jp", class: "control-label"
+        = f.text_field :name, class: "form-control"
+      .form-group
+        = f.label :email, "メールアドレス : hello@cyllabus.jp", class: "control-label"
+        = f.text_field :email, class: "form-control"
+      .form-group
+        = f.label :password, "パスワード : 6文字以上", class: "control-label"
+        = f.password_field :password, class: "form-control"
+      .form-group
+        = f.label :password_confirmation, "パスワード再入力 : 6文字以上", class: "control-label"
+        = f.password_field :password_confirmation, class: "form-control"
+      = f.submit "登録する", class: "btn btn-primary"
+      = link_to "ログインする", new_sessions_path, class: "login pull-right"
+      .clear
