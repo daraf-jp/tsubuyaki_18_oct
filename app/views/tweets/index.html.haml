@@ -4,5 +4,7 @@
       Post new tweet
     .panel-body
 .col-xs-9
+  = link_to "すべてのツイート", tweets_path
+  = link_to "フォローしている人のツイート", timeline_tweets_path
   .list-group
     = render @tweets

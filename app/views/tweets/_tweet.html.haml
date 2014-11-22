@@ -1,6 +1,7 @@
 = div_for tweet, class: "list-group-item" do |t|
   %h4
     = link_to t.user.name, user_path(t.user)
+    = render_user_screen_name(t.user)
   %p
     = t.content
     = distance_of_time_in_words_to_now(t.created_at)

@@ -1,7 +1,6 @@
 module UsersHelper
   def render_user_screen_name user
-    name = user.screen_name ? user.screen_name : user.name
-    "@#{name}"
+    user.screen_name or user.name
   end
 
   def link_to_follow_or_unfollow user
