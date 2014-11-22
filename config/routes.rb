@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'settings/edit'
-
   resources :tweets do
     resource :favorites, only: [:create, :destroy]
   end
