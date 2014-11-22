@@ -1,5 +1,5 @@
 .col-xs-8#users-content
-  = render partial: "user_bio"
+  = render partial: "user_bio", locals: { user: @user }
   %ul.nav.nav-tabs.nav-justified
     %li.active
       = link_to user_path(@user) do
@@ -26,18 +26,21 @@
         .num
           #{@user.favorites.count}
   .list-group
-    = div_for @user.tweets, class: "list-group-item" do |t|
-      %h4.user
-        %span.user-name
-          = link_to t.user.name, user_path(t.user)
-        %span.user-id
-          @#{t.user.name}
-        %span.time.pull-right
-          = distance_of_time_in_words_to_now(t.created_at)
-        .clear
-      .tweet-content
-        %p
-          = t.content
-        .content-footer
-          = link_to_favorite_or_unfavorite t if logged_in?
-          = link_to_follow_or_unfollow t.user if logged_in?
+    - if @user.tweets.any?
+      = div_for @user.tweets, class: "list-group-item" do |t|
+        %h4.user
+          %span.user-name
+            = link_to t.user.name, user_path(t.user)
+          %span.user-id
+            @#{t.user.name}
+          %span.time.pull-right
+            = distance_of_time_in_words_to_now(t.created_at)
+          .clear
+        .tweet-content
+          %p
+            = t.content
+          .content-footer
+            = link_to_favorite_or_unfavorite t if logged_in?
+            = link_to_follow_or_unfollow t.user if logged_in?
+    - else
+      ありません

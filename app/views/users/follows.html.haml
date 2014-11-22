@@ -1,5 +1,5 @@
 .col-xs-8#users-content
-  = render partial: "user_bio"
+  = render partial: "user_bio", locals: { user: @user }
   %ul.nav.nav-tabs.nav-justified
     %li
       = link_to user_path(@user) do
@@ -26,4 +26,7 @@
         .num
           #{@user.favorites.count}
   .list-group
-    = render @user.inverse_followers
+    - if @user.inverse_followers.any?
+      = render @user.inverse_followers
+    - else
+      ありません

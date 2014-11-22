@@ -1,5 +1,5 @@
 .col-xs-8#users-content
-  = render partial: "users/user_bio"
+  = render partial: "users/user_bio", locals: { user: @user }
   %ul.nav.nav-tabs.nav-justified
     %li
       = link_to user_path(@user) do
@@ -26,5 +26,8 @@
         .num
           #{@user.favorites.count}
   .list-group
-    - @user.favorites.each do |favorite|
-      = render favorite.tweet
+    - if @user.favorites.any?
+      - @user.favorites.each do |favorite|
+        = render favorite.tweet
+    - else
+      ありません
